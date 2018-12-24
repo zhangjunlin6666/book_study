@@ -1,0 +1,31 @@
+{
+  "name": "somepackage",
+  "version": "1.0.0",
+  "description": "测试用的",
+  "main": "./lib/interface.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "package",
+    "example"
+  ],
+  "author": "jackson",
+  "license": "ISC",
+  "maintainers": [{
+    "name": "jackson",
+    "email": "441344211@qq.com"
+  }],
+  "contributors": [{
+    "name": "jackson",
+    "email": "441344211@qq.com"
+  }],
+  "bugs": {
+    "email": "441344211@qq.com"
+  },
+  "repositories": {
+    "type": "git",
+    "url": "https://github.com/zhangjunlin6666/book_study.git"
+  }
+
+}
