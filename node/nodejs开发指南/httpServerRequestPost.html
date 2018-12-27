@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        姓名：<input type="text" id='username' placeholder='请输入姓名' value=""><br/>
+        密码：<input type="password" id='pwd'  placeholder="请输入密码" value=""><br/>
+        <input type="button" id='btn' value="提交">
+
+        <script>
+            function createXHR(){
+                if(window.XMLHttpRequest) {
+                    return new XMLHttpRequest();
+                } else {
+                    return new ActiveXObject('Microsoft.XMLHTTP');
+                }
+            }
+            function getEle(id){
+                return document.getElementById(id);
+            }
+            var xhr = createXHR(),
+                username = getEle('username'),
+                pwd = getEle('pwd'),
+                btn = getEle('btn');
+                // param = new FormData(); // 数据使用表单数据来提交，转化成简单请求，避免服务端拦截请求
+            btn.onclick = function(){
+                if(username.value == '' || pwd.value == ''){
+                    return alert('请将信息填写完整')
+                }
+
+                // param.append('name',username.value);
+                // param.append('pwd',pwd.value);
+                // xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded; charset=utf-8");
+
+                xhr.open('post','http://127.0.0.1:3002/');
+                xhr.setRequestHeader("Content-type","application/json; charset=utf-8");
+                var param = JSON.stringify({
+                    name:username.value,
+                    pwd:pwd.value 
+                });
+                xhr.send(param);
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 304)){
+                        console.log(xhr.responseText);
+                        window.location.href = 'http://127.0.0.1:3002/'
+                    }
+                }
+            }
+        </script>
+</body>
+</html>

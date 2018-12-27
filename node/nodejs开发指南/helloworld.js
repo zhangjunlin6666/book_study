@@ -4,6 +4,7 @@
 */
 var http = require('http');
 
+// 源码中调用createServer方法会返回一个服务器对象，return new Server();
 http.createServer(function(req,res){
     res.writeHead('200',{'Content-Type':'text/html'})
     res.write('<h1>node.js</h1>')
