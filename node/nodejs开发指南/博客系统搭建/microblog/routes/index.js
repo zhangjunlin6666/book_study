@@ -1,5 +1,6 @@
 var crypto = require('crypto');
-var User = require('./../models/user.js');
+var User = require('./../models/user');
+var Post = require('./../models/post');
 // 权限控制
 function checkLogin(req,res,next){
   if(!req.session.user){
@@ -33,19 +34,56 @@ module.exports = function (app) { // 调用时需要将app传入进来
 
   // 首页
   app.get('/', function (req, res, next) {
-    res.render('index', {
-      title: '首页'
-    });
+    Post.get(null,function(err,posts){
+      if(err){
+        posts = []
+      }
+      res.render('index',{
+        title:'首页',
+        posts:posts
+      })
+    })
   });
 
   // 获取用户
   app.get('/u/:user', function (req, res) {
-    res.send('user')
+    // 首先判断用户是否存在
+    User.get(req.params.user,function(err,user){
+      if(err){
+        req.flash('error','用户不存在');
+        return res.redirect('/');
+      }
+      // 获取用户列表数据
+      Post.get(user.name,function(err,posts){
+        if(err){
+          req.flash('error',err);
+          return res.redirect('/');
+        }
+        res.render('user',{
+          title:user.name,
+          posts:posts
+        })
+      })
+    })
   })
 
   // 提交发表的信息
+  app.post('/post',checkLogin);
   app.post('/post', function (req, res) {
-    res.send('post')
+    var user = req.session.user;
+    if(req.body.post == ''){
+      req.flash('error','内容不能为空');
+      return res.redirect('/u/' + user.name);
+    }
+    var post = new Post(user.name,req.body.post);
+    post.save(function(err){
+      if(err){
+        req.flash('error',err);
+        return res.redirect('/');
+      }
+      req.flash('success','发表成功');
+      res.redirect('/u/' + user.name);
+    })
   })
 
   // 匹配注册页面

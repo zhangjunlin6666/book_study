@@ -43,6 +43,7 @@ app.use(function(req,res,next){
     return 'welcome to the page, the url is:' + res.locals.appUrl;
   }
   res.locals.user = function(){
+    console.log(req.session.user);
     return req.session.user;
   }
   // 注意此处需要用toString()方法将其转化成字符串
