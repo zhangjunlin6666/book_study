@@ -1,0 +1,32 @@
+[Wed Jan 02 2019 14:33:15 GMT+0800 (GMT+08:00)]/hello
+Error: an error for test purposes.
+    at /Users/jackson/Desktop/book_study/node/nodejs开发指南/博客系统搭建/microblog/routes/index.js:33:11
+    at Layer.handle [as handle_request] (/Users/jackson/Desktop/book_study/node/nodejs开发指南/博客系统搭建/microblog/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/jackson/Desktop/book_study/node/nodejs开发指南/博客系统搭建/microblog/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/Users/jackson/Desktop/book_study/node/nodejs开发指南/博客系统搭建/microblog/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/jackson/Desktop/book_study/node/nodejs开发指南/博客系统搭建/microblog/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/jackson/Desktop/book_study/node/nodejs开发指南/博客系统搭建/microblog/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/Users/jackson/Desktop/book_study/node/nodejs开发指南/博客系统搭建/microblog/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/jackson/Desktop/book_study/node/nodejs开发指南/博客系统搭建/microblog/node_modules/express/lib/router/index.js:275:10)
+    at /Users/jackson/Desktop/book_study/node/nodejs开发指南/博客系统搭建/microblog/app.js:60:3
+    at Layer.handle [as handle_request] (/Users/jackson/Desktop/book_study/node/nodejs开发指南/博客系统搭建/microblog/node_modules/express/lib/router/layer.js:95:5)
+[Wed Jan 02 2019 14:33:40 GMT+0800 (GMT+08:00)]/img/glyphicons-halflings.png
+NotFoundError: Not Found
+    at /Users/jackson/Desktop/book_study/node/nodejs开发指南/博客系统搭建/microblog/app.js:70:8
+    at Layer.handle [as handle_request] (/Users/jackson/Desktop/book_study/node/nodejs开发指南/博客系统搭建/microblog/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/jackson/Desktop/book_study/node/nodejs开发指南/博客系统搭建/microblog/node_modules/express/lib/router/index.js:317:13)
+    at /Users/jackson/Desktop/book_study/node/nodejs开发指南/博客系统搭建/microblog/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/Users/jackson/Desktop/book_study/node/nodejs开发指南/博客系统搭建/microblog/node_modules/express/lib/router/index.js:335:12)
+    at Immediate.next (/Users/jackson/Desktop/book_study/node/nodejs开发指南/博客系统搭建/microblog/node_modules/express/lib/router/index.js:275:10)
+    at Immediate._onImmediate (/Users/jackson/Desktop/book_study/node/nodejs开发指南/博客系统搭建/microblog/node_modules/express/lib/router/index.js:635:15)
+    at processImmediate (timers.js:634:17)
+[Wed Jan 02 2019 14:33:49 GMT+0800 (GMT+08:00)]/img/glyphicons-halflings.png
+NotFoundError: Not Found
+    at /Users/jackson/Desktop/book_study/node/nodejs开发指南/博客系统搭建/microblog/app.js:70:8
+    at Layer.handle [as handle_request] (/Users/jackson/Desktop/book_study/node/nodejs开发指南/博客系统搭建/microblog/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/jackson/Desktop/book_study/node/nodejs开发指南/博客系统搭建/microblog/node_modules/express/lib/router/index.js:317:13)
+    at /Users/jackson/Desktop/book_study/node/nodejs开发指南/博客系统搭建/microblog/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/Users/jackson/Desktop/book_study/node/nodejs开发指南/博客系统搭建/microblog/node_modules/express/lib/router/index.js:335:12)
+    at Immediate.next (/Users/jackson/Desktop/book_study/node/nodejs开发指南/博客系统搭建/microblog/node_modules/express/lib/router/index.js:275:10)
+    at Immediate._onImmediate (/Users/jackson/Desktop/book_study/node/nodejs开发指南/博客系统搭建/microblog/node_modules/express/lib/router/index.js:635:15)
+    at processImmediate (timers.js:634:17)

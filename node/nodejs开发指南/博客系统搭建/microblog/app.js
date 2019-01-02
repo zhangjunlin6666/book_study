@@ -9,7 +9,11 @@ var MongoStore = require('connect-mongo')(session); // 用于将用户信息存�
 var flash = require('connect-flash'); // 用于向浏览器抛出错误
 var settings = require('./settings');
 var app = express();
-
+var fs = require('fs');
+var morgan = require('morgan'); // 用于访问日志的创建
+// 创建访问日志写入流文件
+var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
+var errorLogStream = fs.createWriteStream(path.join(__dirname, 'error.log'), { flags: 'a' });
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -29,6 +33,9 @@ app.use(session({
   saveUninitialized: true
 }));
 app.use(flash());
+ 
+// 应用中间件
+app.use(morgan('combined', { stream: accessLogStream }));
 
 // 静态视图助手,可在视图中全局调用
 app.locals.appName = 'microblog';
@@ -72,6 +79,10 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+  
+  // 错误日志输出
+  var meta = `[${new Date()}]${req.url}\n`;
+  errorLogStream.write(meta + err.stack + '\n');
 });
 
 module.exports = app;
