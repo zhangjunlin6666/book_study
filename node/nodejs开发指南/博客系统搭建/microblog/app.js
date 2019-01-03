@@ -2,7 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser'); // 解析cookie的中间件
-var logger = require('morgan');
+var logger = require('morgan'); // 用于访问日志的创建
 var expressLayouts = require('express-ejs-layouts');
 var session = require('express-session'); // 提供会话支持
 var MongoStore = require('connect-mongo')(session); // 用于将用户信息存储在mongo数据库中，而不是内存中
@@ -10,7 +10,6 @@ var flash = require('connect-flash'); // 用于向浏览器抛出错误
 var settings = require('./settings');
 var app = express();
 var fs = require('fs');
-var morgan = require('morgan'); // 用于访问日志的创建
 // 创建访问日志写入流文件
 var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
 var errorLogStream = fs.createWriteStream(path.join(__dirname, 'error.log'), { flags: 'a' });
@@ -18,7 +17,9 @@ var errorLogStream = fs.createWriteStream(path.join(__dirname, 'error.log'), { f
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(logger('dev'));
+// app.use(logger('dev'));
+// 应用中间件
+app.use(logger('combined', { stream: accessLogStream }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser()); // 解析cookie
@@ -34,8 +35,7 @@ app.use(session({
 }));
 app.use(flash());
  
-// 应用中间件
-app.use(morgan('combined', { stream: accessLogStream }));
+
 
 // 静态视图助手,可在视图中全局调用
 app.locals.appName = 'microblog';
